@@ -16,6 +16,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build the Docker 11 image
         run: "docker build \
-              --file debian-11-systemd/Dockerfile \
-              --tag debian-11-systemd:$(date +%Y%m%d) \
-              --tag debian-11-systemd:latest"
+                --file debian-11-systemd/Dockerfile \
+                --tag debian-11-systemd:$(date +%Y%m%d) \
+                --tag debian-11-systemd:latest \
+                debian-11-systemd"
