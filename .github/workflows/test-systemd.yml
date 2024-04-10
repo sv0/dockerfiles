@@ -1,0 +1,33 @@
+---
+name: Test systemd Docker Image
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out codebase
+        uses: actions/checkout@v4
+
+      - name: Build a test image
+        run: |
+          docker build --tag test-systemd-image:latest .
+
+      - name: Create a test container
+        run: >-
+          docker run
+            --name test-systemd-container
+            --detach
+            --privileged
+            --volume /sys/fs/cgroup:/sys/fs/cgroup:rw
+            --tmpfs /run
+            --tmpfs /tmp
+            --cgroupns host
+            test-systemd-image
+
+      - name: Check if container is running
+        run: timeout 20s bash -c 'until [ "$(docker inspect -f {{.State.Running}} test-systemd-container)" == "true" ]; do sleep 2; done'
+
+      - name: Test systemctl
+        run: docker exec --tty test-systemd-container env TERM=xterm systemctl --version
