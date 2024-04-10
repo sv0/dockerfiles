@@ -1,5 +1,5 @@
 FROM debian:bookworm-slim
-MAINTAINER "Slavik Svyrydiuk <slavik@svyrydiuk.eu>"
+LABEL org.opencontainers.image.authors="Slavik Svyrydiuk <slavik@svyrydiuk.eu>"
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
