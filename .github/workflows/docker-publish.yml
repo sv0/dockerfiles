@@ -9,11 +9,12 @@ on:  # yamllint disable-line rule:truthy
   schedule:
     - cron: '29 23 * * *'
   push:
-    branches: [ "master" ]
+    branches:
+      - main-disabled
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
-  pull_request:
-    branches: [ "master" ]
+      #  pull_request:
+      #    branches: [ "master" ]
 
 env:
   # Use docker.io for Docker Hub if empty
