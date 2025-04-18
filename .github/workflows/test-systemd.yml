@@ -1,6 +1,6 @@
 ---
 name: Test systemd Docker Image
-on:
+on:  # yamllint disable-line rule:truthy
   workflow_call:
 
 jobs:
