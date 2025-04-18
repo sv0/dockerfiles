@@ -11,11 +11,16 @@ RUN apt-get install -y \
         python3-apt \
         python3-setuptools \
         systemd-sysv \
+        openssh-client \
         readline-common
 RUN apt-get install -y --no-install-recommends --no-install-suggests \
         curl \
         neovim \
-        hydra
+        proxychains \
+        hydra \
+        nmap \
+        netcat-traditional \
+        dash
 RUN find /lib/systemd/system/sysinit.target.wants \
         -type l \
         -not -name systemd-tmpfiles-setup.service \
