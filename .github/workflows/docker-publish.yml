@@ -6,8 +6,8 @@ name: Docker publish
 # documentation.
 
 on:  # yamllint disable-line rule:truthy
-  schedule:
-    - cron: '29 23 * * *'
+  # schedule:
+  #   - cron: '29 23 5 * *'
   push:
     branches:
       - main-disabled
