@@ -6,7 +6,7 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - "master"
     paths:
-      - 'Dockerfile'
+      - '**/Dockerfile'
 
 jobs:
   build:
