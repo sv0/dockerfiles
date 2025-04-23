@@ -1,5 +1,6 @@
 FROM debian:trixie-slim
 LABEL org.opencontainers.image.authors="Slavik Svyrydiuk <slavik@svyrydiuk.eu>"
+LABEL org.opencontainers.image.source="https://github.com/sv0/dockerfiles/tree/master/debian-13-systemd/Dockerfile"
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
