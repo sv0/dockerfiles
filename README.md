@@ -4,5 +4,9 @@
 
 This git repository includes:
 
-- Minimal systemd enabled Debian Docker images for testing Ansible roles with Molecule.
+- Minimal systemd enabled Debian Docker images for testing Ansible roles with Molecule
+   - debian-10-systemd
+   - debian-11-systemd
+   - debian-12-systemd
+   - debian-13-systemd
 - Custom Kali Linux images
