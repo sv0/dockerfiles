@@ -1,18 +1,28 @@
-TAG="slavik0/debian-11-systemd"
+TAG=debian-11-systemd
+HUB_DOCKER_COM_USER=slavik0
+HUB_DOCKER_COM_TAG=$(HUB_DOCKER_COM_USER)/$(TAG)
+GITHUB_REGISTRY_USER=sv0
+GITHUB_REGISTRY_TAG=ghcr.io/$(GITHUB_REGISTRY_USER)/$(TAG)
+
+# Get the current date in YYYYMMDD format for tagging.
+DATE := $(shell date +%Y%m%d)
+
+.PHONY: all
+all: build
+
 .PHONY: build
 build:
-	docker build -t $(TAG):latest \
-				 -t $(TAG):$(shell date +%Y%m%d%H) .
+	docker buildx build \
+		--platform linux/amd64,linux/arm64,linux/arm/v7 \
+		-t $(HUB_DOCKER_COM_TAG):latest \
+		-t $(HUB_DOCKER_COM_TAG):$(DATE) \
+		-t $(GITHUB_REGISTRY_TAG):latest \
+		-t $(GITHUB_REGISTRY_TAG):$(DATE) \
+		--push \
+		.
 
 .PHONY: run
 run:
-	docker run -ti $(TAG):latest bash
-
-.PHONY: push
-push: build
-	docker push $(TAG):latest
-	docker push $(TAG):$(shell date +%Y%m%d%H)
-
-.PHONY: clean
-clean:
-	docker images | grep $(TAG) | awk '{print $$3}' | xargs docker rmi -f
+	docker run --tty --interactive \
+		$(HUB_DOCKER_COM_TAG):latest \
+		bash
