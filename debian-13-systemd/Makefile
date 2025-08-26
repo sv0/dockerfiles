@@ -8,15 +8,17 @@ GITHUB_REGISTRY_TAG=ghcr.io/$(GITHUB_REGISTRY_USER)/$(TAG)
 DATE := $(shell date +%Y%m%d)
 
 .PHONY: all
-all: build push
+all: build
 
 .PHONY: build
 build:
-	docker build \
+	docker buildx build \
+		--platform linux/amd64,linux/arm64,linux/arm/v7 \
 		-t $(HUB_DOCKER_COM_TAG):latest \
 		-t $(HUB_DOCKER_COM_TAG):$(DATE) \
 		-t $(GITHUB_REGISTRY_TAG):latest \
 		-t $(GITHUB_REGISTRY_TAG):$(DATE) \
+		--push \
 		.
 
 .PHONY: run
@@ -24,10 +26,3 @@ run:
 	docker run --tty --interactive \
 		$(HUB_DOCKER_COM_TAG):latest \
 		bash
-
-.PHONY: push
-push:
-	docker push $(HUB_DOCKER_COM_TAG):latest
-	docker push $(HUB_DOCKER_COM_TAG):$(DATE)
-	docker push $(GITHUB_REGISTRY_TAG):latest
-	docker push $(GITHUB_REGISTRY_TAG):$(DATE)
