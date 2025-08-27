@@ -1,7 +1,9 @@
 FROM debian:buster-slim
 LABEL org.opencontainers.image.authors="Slavik Svyrydiuk <slavik@svyrydiuk.eu>"
+LABEL org.opencontainers.image.source="https://github.com/sv0/dockerfiles/tree/master/debian-10-systemd/Dockerfile"
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
+COPY ./etc/apt/sources.list /etc/apt/sources.list
 RUN apt-get update --allow-releaseinfo-change && \
     apt-get install -y --no-install-recommends \
         ca-certificates \
