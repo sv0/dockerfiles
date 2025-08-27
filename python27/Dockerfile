@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 LABEL org.opencontainers.image.authors="Slavik Svyrydiuk <slavik@svyrydiuk.eu>"
 LABEL org.opencontainers.image.source="https://github.com/sv0/dockerfiles/tree/master/python27/Dockerfile"
 ENV DEBIAN_FRONTEND=noninteractive

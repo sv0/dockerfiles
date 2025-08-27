@@ -13,7 +13,7 @@ all: build
 .PHONY: build
 build:
 	docker buildx build \
-		--platform linux/amd64,linux/arm64,linux/arm/v7 \
+		--platform linux/amd64 \
 		-t $(HUB_DOCKER_COM_TAG):latest \
 		-t $(HUB_DOCKER_COM_TAG):$(DATE) \
 		-t $(GITHUB_REGISTRY_TAG):latest \
