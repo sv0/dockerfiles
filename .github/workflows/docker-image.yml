@@ -22,6 +22,10 @@ jobs:
             dockerfile: debian-12-systemd/Dockerfile
           - image: slavik0/debian-13-systemd
             dockerfile: debian-13-systemd/Dockerfile
+          - image: slavik0/python27
+            dockerfile: python27/Dockerfile
+          - image: slavik0/python36
+            dockerfile: python36/Dockerfile
     steps:
       - uses: actions/checkout@v4
 
