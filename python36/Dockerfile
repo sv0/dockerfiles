@@ -1,7 +1,8 @@
 FROM ubuntu:18.04
 LABEL org.opencontainers.image.authors="Slavik Svyrydiuk <slavik@svyrydiuk.eu>"
+LABEL org.opencontainers.image.source="https://github.com/sv0/dockerfiles/tree/master/python36/Dockerfile"
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     "python3.6=3.6.9*" \
