@@ -8,8 +8,7 @@ RUN apk update && apk add \
         spawn-fcgi \
         perl-cgi \
     && rm -rf /var/cache/apk/* \
-        /usr/share \
-        /var/log/*
+        /usr/share
 
 COPY docker-entrypoint.d /docker-entrypoint.d/
 COPY templates /etc/nginx/templates/
