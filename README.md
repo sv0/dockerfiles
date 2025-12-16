@@ -10,3 +10,7 @@ This git repository includes:
    - debian-12-systemd
    - debian-13-systemd
 - Custom Kali Linux images
+
+## Refs
+
+- [Multi-platform builds](https://docs.docker.com/build/building/multi-platform/)
