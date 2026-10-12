@@ -15,15 +15,20 @@ jobs:
       matrix:
         include:
           - image: slavik0/debian-10-systemd
-            dockerfile: debian-11-systemd/Dockerfile
+            dockerfile: debian-10-systemd/Dockerfile
+
           - image: slavik0/debian-11-systemd
             dockerfile: debian-11-systemd/Dockerfile
+
           - image: slavik0/debian-12-systemd
             dockerfile: debian-12-systemd/Dockerfile
+
           - image: slavik0/debian-13-systemd
             dockerfile: debian-13-systemd/Dockerfile
+
           - image: slavik0/python27
             dockerfile: python27/Dockerfile
+
           - image: slavik0/python36
             dockerfile: python36/Dockerfile
     steps:
@@ -49,5 +54,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          # platforms: "linux/amd64,linux/arm64,linux/arm/v7"
-          platforms: "linux/amd64"
+          platforms: "linux/amd64,linux/arm64,linux/arm/v7"
