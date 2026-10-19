@@ -8,6 +8,9 @@ on:  # yamllint disable-line rule:truthy
     paths:
       - '**/Dockerfile'
 
+  schedule:
+    - cron: '30 9 * * 1'
+
 jobs:
   build:
     runs-on: ubuntu-latest
